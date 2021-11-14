@@ -6,6 +6,7 @@
 package Exam_project;
 
 import java.util.regex.Matcher;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -112,6 +113,11 @@ public class SEAPP extends javax.swing.JFrame {
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 0), 2, true));
         jButton1.setContentAreaFilled(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -238,6 +244,35 @@ public class SEAPP extends javax.swing.JFrame {
     private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_nameKeyReleased
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+       
+        String Name = name.getText().toString();
+        String Mobile = mobile.getText().toString();
+        String Email = email.getText().toString();
+        String PW = pw.getText().toString();
+        
+        User u = new User(Name, Mobile, PW, Email);
+        
+        Name n = new Name();
+        Mobile m = new Mobile();
+        Password p = new Password();
+        Email e = new Email();
+        
+        n.setNext(m);
+        m.setNext(p);
+        p.setNext(e);
+        
+        n.process(u);
+        
+        System.out.println(u.count);
+        
+        if(u.count==4){
+            JOptionPane.showMessageDialog(SEAPP.this, "Registration Successfull");
+        }else{
+            JOptionPane.showMessageDialog(SEAPP.this, "Registration Fail");
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
