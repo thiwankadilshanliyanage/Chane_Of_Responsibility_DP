@@ -3,6 +3,7 @@ package Exam_project;
 
 import java.util.regex.Matcher;
 
+
 /**
  *
  * @author Thiwanka
@@ -20,6 +21,8 @@ public class pattern {
         p.setNext(e);
         n.process(i);
     }
+
+   
     
 }
 
@@ -59,10 +62,10 @@ class Name extends Responibility{
     public void process(User user) {
         if(!user.name.isEmpty()){
             user.count++;
-            System.out.println(user.count);
+           // System.out.println(user.count);
             this.responibility.process(user);
         }else{
-            System.out.println(user.count);
+           // System.out.println(user.count);
         }
     }
     
@@ -78,15 +81,15 @@ class Mobile extends Responibility{
             if(user.mobile.length()==10){
                 
                 user.count++;
-                System.out.println(user.count);
+               // System.out.println(user.count);
                 this.responibility.process(user);
                 
             }else{
-                System.out.println(user.count);
+              //  System.out.println(user.count);
             }
             
         }else{
-            System.out.println(user.count);
+          //  System.out.println(user.count);
         }
         
     }
@@ -105,15 +108,15 @@ class Password extends Responibility{
             if(user.password.length()>=8){
                 if (matcher.matches()){
                     user.count++;
-                    System.out.println(user.count);
+                   // System.out.println(user.count);
                     this.responibility.process(user);
                     
                 }else{
-                    System.out.println(user.count);
+                  //  System.out.println(user.count);
                 }
                 
             }else{
-                System.out.println(user.count);
+              //  System.out.println(user.count);
             }
         
     }
@@ -133,13 +136,13 @@ class Email extends Responibility{
             
             if(matcher.matches()){
                 user.count++;
-                System.out.println(user.count);
+              //  System.out.println(user.count);
             }else{
-                System.out.println(user.count);
+              //  System.out.println(user.count);
             }
             
         }else{
-            System.out.println(user.count);
+           // System.out.println(user.count);
         }
         
     }

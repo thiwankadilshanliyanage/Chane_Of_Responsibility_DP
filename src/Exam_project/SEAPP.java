@@ -40,10 +40,10 @@ public class SEAPP extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         mobile = new javax.swing.JTextField();
-        pw = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        country = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        pw = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("User Registration");
@@ -83,28 +83,28 @@ public class SEAPP extends javax.swing.JFrame {
         name.setForeground(new java.awt.Color(255, 255, 255));
         name.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
         name.setOpaque(false);
+        name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameKeyReleased(evt);
+            }
+        });
 
         mobile.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         mobile.setForeground(new java.awt.Color(255, 255, 255));
         mobile.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
         mobile.setOpaque(false);
 
-        pw.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        pw.setForeground(new java.awt.Color(255, 255, 255));
-        pw.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
-        pw.setOpaque(false);
-
         email.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         email.setForeground(new java.awt.Color(255, 255, 255));
         email.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
         email.setOpaque(false);
 
-        jComboBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sri Lanka", "India", "Bangaladesh", "Pakistan", "Afgenistan" }));
-        jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jComboBox1.setOpaque(false);
+        country.setBackground(new java.awt.Color(0, 0, 0));
+        country.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        country.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sri Lanka", "India", "Bangaladesh", "Pakistan", "Afgenistan" }));
+        country.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
+        country.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        country.setOpaque(false);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,6 +117,9 @@ public class SEAPP extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        pw.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
+        pw.setOpaque(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,18 +138,16 @@ public class SEAPP extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(email)
-                                    .addComponent(jComboBox1, 0, 313, Short.MAX_VALUE)))))
+                                    .addComponent(country, 0, 313, Short.MAX_VALUE)
+                                    .addComponent(pw)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -163,18 +164,21 @@ public class SEAPP extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(mobile, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(pw, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(country, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -228,130 +232,12 @@ public class SEAPP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        class User{
-    
-    String name;
-    String mobile;
-    String password;
-    String email;
-    
-    int count=0;
 
-    public User(String name, String mobile, String password, String email) {
-        this.name = name;
-        this.mobile = mobile;
-        this.password = password;
-        this.email = email;
-    }
-    
-}
-
-abstract class Responibility{
-    
-    protected Responibility responibility;
-    
-    public void setNext(Responibility responibility){
-        this.responibility=responibility;
-    }
-    
-    public abstract void process(User user);
-    
-}
-
-class Name extends Responibility{
-    
-    @Override
-    public void process(User user) {
-        if(!user.name.isEmpty()){
-            user.count++;
-            System.out.println(user.count);
-            this.responibility.process(user);
-        }else{
-            System.out.println(user.count);
-        }
-    }
-    
-}
-
-class Mobile extends Responibility{
-    
-    @Override
-    public void process(User user) {
-        
-        if(!user.mobile.isEmpty()){
-            
-            if(user.mobile.length()==10){
-                
-                user.count++;
-                System.out.println(user.count);
-                this.responibility.process(user);
-                
-            }else{
-                System.out.println(user.count);
-            }
-            
-        }else{
-            System.out.println(user.count);
-        }
-        
-    }
-    
-}
-
-class Password extends Responibility{
-    
-    @Override
-    public void process(User user) {
-        
-        String regex = "^(?=.\\d)(?=.[a-z])(?=.[A-Z])(?=.[0-9]).{8,25}$";
-        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(user.password);
-        
-            if(user.password.length()>=8){
-                if (matcher.matches()){
-                    user.count++;
-                    System.out.println(user.count);
-                    this.responibility.process(user);
-                    
-                }else{
-                    System.out.println(user.count);
-                }
-                
-            }else{
-                System.out.println(user.count);
-            }
-        
-    }
-    
-}
-
-class Email extends Responibility{
-        
-    @Override
-    public void process(User user) {
-        
-        String regex = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
-        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(user.email);
-        
-        if(!user.email.isEmpty()){
-            
-            if(matcher.matches()){
-                user.count++;
-                System.out.println(user.count);
-            }else{
-                System.out.println(user.count);
-            }
-            
-        }else{
-            System.out.println(user.count);
-        }
-        
-    }
-}
-        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameKeyReleased
 
     /**
      * @param args the command line arguments
@@ -389,9 +275,9 @@ class Email extends Responibility{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> country;
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -403,6 +289,6 @@ class Email extends Responibility{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField mobile;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField pw;
+    private javax.swing.JPasswordField pw;
     // End of variables declaration//GEN-END:variables
 }
