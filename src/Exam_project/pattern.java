@@ -11,19 +11,17 @@ import java.util.regex.Matcher;
 public class pattern {
     
     public static void main(String[] args) {
-        User i=new User("fg", "asdasdassa", "Ja5sfJa5s", "dan@gmail.com");
-        Name n=new Name();
-        Mobile m=new Mobile();
-        Password p=new Password();
-        Email e=new Email();
-        n.setNext(m);
-        m.setNext(p);
-        p.setNext(e);
-        n.process(i);
+//        User i=new User("fg", "asdasdassa", "Ja5sfJa5s", "dan@gmail.com");
+//        Name n=new Name();
+//        Mobile m=new Mobile();
+//        Password p=new Password();
+//        Email e=new Email();
+//        n.setNext(m);
+//        m.setNext(p);
+//        p.setNext(e);
+//        n.process(i);
     }
-
-   
-    
+ 
 }
 
 class User{
@@ -76,6 +74,10 @@ class Mobile extends Responibility{
     @Override
     public void process(User user) {
         
+        String regex = "^\\+(?:[0-9] ?){6,14}[0-9]$";
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(user.mobile);
+       
         if(!user.mobile.isEmpty()){
             
             if(user.mobile.length()==10){
@@ -101,7 +103,7 @@ class Password extends Responibility{
     @Override
     public void process(User user) {
         
-        String regex = "^(?=.\\d)(?=.[a-z])(?=.[A-Z])(?=.[0-9]).{8,25}$";
+        String regex =  "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,25}$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
         Matcher matcher = pattern.matcher(user.password);
         
@@ -128,7 +130,7 @@ class Email extends Responibility{
     @Override
     public void process(User user) {
         
-        String regex = "^[\\w!#$%&'+/=?`{|}~^-]+(?:\\.[\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
+        String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regex);
         Matcher matcher = pattern.matcher(user.email);
         

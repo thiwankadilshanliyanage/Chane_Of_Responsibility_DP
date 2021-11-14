@@ -5,7 +5,7 @@
  */
 package Exam_project;
 
-import java.util.regex.Matcher;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -94,6 +94,11 @@ public class SEAPP extends javax.swing.JFrame {
         mobile.setForeground(new java.awt.Color(255, 255, 255));
         mobile.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
         mobile.setOpaque(false);
+        mobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mobileKeyTyped(evt);
+            }
+        });
 
         email.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         email.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,6 +129,7 @@ public class SEAPP extends javax.swing.JFrame {
             }
         });
 
+        pw.setForeground(new java.awt.Color(255, 255, 255));
         pw.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 2, true));
         pw.setOpaque(false);
 
@@ -273,6 +279,13 @@ public class SEAPP extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(SEAPP.this, "Registration Fail");
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void mobileKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobileKeyTyped
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c)||(c == KeyEvent.VK_BACK_SPACE)||(c == KeyEvent.VK_DELETE))) {
+             evt.consume();
+        }
+    }//GEN-LAST:event_mobileKeyTyped
 
     /**
      * @param args the command line arguments
